@@ -87,5 +87,15 @@ Route::get('/anotherRoute/{id}', function($data) {
     return 'anotherRoute ' .$data;
 });
 
+// nice one 
+// Route::get('/greet/{name}', function($name) {
+//     // return view('greeting', ['name' => '`Bond, James Bond`']);
+//     return view('greeting', ['name' => $name]);
+// });
 
+Route::get('/admin/{data}', function($data) {
+    // return view('admin.profile', ['data' => $data]);
+    return view('admin.profile', compact('data'));
+    // return view('admin.profile', $data);
+});
 
