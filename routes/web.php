@@ -99,3 +99,11 @@ Route::get('/admin/{data}', function($data) {
     // return view('admin.profile', $data);
 });
 
+Route::get('/test', function() {
+    $name="Suraj";
+    $city="Jalandhar";
+    return view('test')->withName($name)->withCity($city);
+});
+
+
+

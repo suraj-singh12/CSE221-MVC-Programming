@@ -20,5 +20,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        view()->share('name', 'Nitro 5');       // share with all the views
     }
 }
