@@ -7,5 +7,7 @@
 </head>
 <body>
     <h2>Name: {{ $name }} <br> City: {{ $city }} </h2>  
+    <h2>{{$PCname}}</h2>
 </body>
 </html>
+

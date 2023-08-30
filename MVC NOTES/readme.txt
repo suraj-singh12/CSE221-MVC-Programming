@@ -165,6 +165,13 @@ a namespace is a way of encapsulating items so that items with the same name do 
 Q: How can you apply global route constraints in Laravel
 by using the pattern method in the RouteServiceProvider.php file.
 
+-----------------------------------------------------------------
+associative arrays:
+key => value
+
+AIM oF RESPONSE:
+is to provide the client with the resource it requested, or inform the client that the action it requested has been caried out; or else to inform the client that an error occurred in processing its request.
+
 
 
 

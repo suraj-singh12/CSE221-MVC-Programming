@@ -87,11 +87,18 @@ Route::get('/anotherRoute/{id}', function($data) {
     return 'anotherRoute ' .$data;
 });
 
-// nice one 
-// Route::get('/greet/{name}', function($name) {
-//     // return view('greeting', ['name' => '`Bond, James Bond`']);
-//     return view('greeting', ['name' => $name]);
-// });
+
+// passing data (array) to view
+Route::get('/greet/{name}', function($name) {
+    return view('greeting', ['name' => '`Bond, James Bond`']);
+});
+
+
+// nice one : passing data to view (after taking from url)
+Route::get('/greet/{name}', function($name) {
+    // return view('greeting', ['name' => '`Bond, James Bond`']);
+    return view('greeting', ['name' => $name]);
+});
 
 Route::get('/admin/{data}', function($data) {
     // return view('admin.profile', ['data' => $data]);
@@ -99,11 +106,16 @@ Route::get('/admin/{data}', function($data) {
     // return view('admin.profile', $data);
 });
 
+// passing data to view (single data (non-array))
 Route::get('/test', function() {
     $name="Suraj";
     $city="Jalandhar";
     return view('test')->withName($name)->withCity($city);
 });
 
+// withKeyname(name), withCollege($college) and many : all custom methods
 
 
+// ----------------------------
+// RESPONSES
+// ----------------------------
