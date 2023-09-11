@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProvisionServer;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\UserMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -116,6 +120,86 @@ Route::get('/test', function() {
 // withKeyname(name), withCollege($college) and many : all custom methods
 
 
-// ----------------------------
-// RESPONSES
-// ----------------------------
+
+// redirection: ::: :: 
+// ------------------------------------------------
+Route::get('/home/dashboard', function() {
+    return view('welcome');
+});
+Route::get('/dashboard', function() {
+    // redirecting to another route
+    return redirect('/home/dashboard');
+});
+
+// ------------------------------------------------
+
+// Redirecting to named routes:
+Route::get('/myTestUrl', ['as' => 'testing', function() {   // other route can redirect to testing, but user can't put testing in the url
+    return view('welcome');
+}]);
+
+// redirecting to another route
+Route::get('redirect', function() {
+    return redirect()->route('testing');        // will redirect to myTestUrl (which has an alias name as 'testing')
+});
+
+
+// ------------------------------------------------
+
+// redirecting to an external url
+Route::get('/code', function() {
+    return redirect()->away('https://www.github.com/');
+});
+
+
+
+// Route::get('/action', function() {
+//     return redirect()->action('HomeController@index');
+// });
+
+// ------------------------------------------------
+//  defining a route to the controller
+
+Route::get('/controllerUser', [UserController::class, "show"]);        // here we are referencing to the show() method of UserController class
+
+Route::get('/controllerUser/hello', [UserController::class, "hello"]);        // here we are referencing to the hello() method [custom method] of UserController class   
+
+
+Route::get('/provision', ProvisionServer::class);
+
+Route::post('/provisionPost', ProvisionServer::class);
+
+// using my custom middleware by nickname 
+Route::get('/profile', [UserController::class, "show"])
+    ->middleware('userNew');
+
+// using my custom middleware by its name
+// Route::get('/tmpProfile', [UserController::class, "show"])
+//     ->middleware(UserMiddleware::class);
+
+
+Route::get('/tmpProfile', [UserController::class, "show"]);
+
+Route::get('/customRoute1', function() {
+    return view('welcome');
+});
+
+Route::prefix('custom')->middleware('UserMiddleware')->group(function() {
+    //routes defined here will have 'custom' prefix and will use 'UserMiddleware' middleware
+    
+    //  pending !!!!!
+});
+
+Route::resource('posts', PostController::class);
+/*
+this single line of code generates multiple reoutes fr common CRUD operations, including:
+GET         /posts (index method):          Displays a list of all posts
+GET         /posts/create (create method):  Show the form for creating a new post
+POST        /posts (store method):          Store a newly created post in the database
+GET         /posts/{id} (show method):      Display the details of a specific post
+GET         /posts/{id} (edit method):      Show the form for editing a post
+PUT/PATCH   /posts/{id} (update method):    Update a speific post in the database
+DELETE      /posts/{id} (destroy method):   Delete a specific post from the databse
+*/
+
+

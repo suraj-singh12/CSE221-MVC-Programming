@@ -4,7 +4,9 @@
 MVC: Model View Controller              [Design Pattern / Conceptual Framework]
 During implementations we have layers, for modularity & easy management of code.
 
-Model: db, View: UI, Controller: logic
+Model: db, 
+View: UI, 
+Controller: logic
 
 Larvel:
     Features: Secure, auth, supports mvc, easy migration,
@@ -37,7 +39,6 @@ composer create-project laravel/laravel projectName         (creates new laravel
 | To Run |
 ----------
 php artisan serve (starts server at port 8000)
-(ensure xampp is running mysql & apache)
 
 -----------------------
 | Directory structure |
@@ -173,5 +174,39 @@ AIM oF RESPONSE:
 is to provide the client with the resource it requested, or inform the client that the action it requested has been caried out; or else to inform the client that an error occurred in processing its request.
 
 
+where('id', 'pattern');
+whereIn('id', ['pattern1', 'pattern2', ....])
+whereNumber('id')
+whereAlpha('id')
+whereAlphaNumeric('id')
 
+--------------------------------------------------
+Redirections (redirect):
+A technique for making a web page under more than one URI address
+
+
+// generating a new controller: 
+php artisan make:controller yourControllerName
+php artisan make:controller userController 
+
+// generating a new middleware
+php artisan make:middleware yourMiddlewareName
+
+
+-----------------------------------------------------
+Dependency Injection:
+is a technique whereby one object supplies the dependencies of another object. A dependency is an object that can be used (a service). An injection is the passing of a dependency to a dependent object (a client) that would use it.
+We pass dependency using constructor (mostly) or setter methods.
+
+
+ controller Middleware:
+
+-------------------------------------------------------
+11/09/23
+missed class : regarding controller (grouping ..)
+rest:
+
+Restful Resource Controller: 
+php artisan make:controller yourControllerName --resource
+eg: php artisan make:controller PostController --resource
 
