@@ -18,4 +18,14 @@ class UserController extends Controller
     function __Construct() {
         $this->middleware('UserMiddleware');
     }
+    
+    function dashboard() {
+        return "dashboard from UserController";
+    }
+    function users() {
+        return "users from UserController";
+    }
+    function settings() {
+        return "settings from UserController";
+    }
 }

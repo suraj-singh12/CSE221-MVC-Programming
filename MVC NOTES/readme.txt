@@ -210,3 +210,41 @@ Restful Resource Controller:
 php artisan make:controller yourControllerName --resource
 eg: php artisan make:controller PostController --resource
 
+
+-------------------------------------------------------------
+
+Blade Templates
+
+Displaying data:
+Route::get('/', function() {
+    return view('welcome', ['name' => 'Suraj']);
+});
+
+
+Hello {{$name}} : put in welcome.blade
+
+-------------------
+Blade Directives:
+-------------------
+conditional logic: @if, @else, @elseif, @unless, @isset, @empty, @auth, @guest, @switch, @case, @default, @break
+looping: @for, @foreach, @forelse, @while, @continue, @break
+php: @php, @endphp
+comments: {{-- comment --}}
+escaping: @verbatim, @endverbatim
+other: @auth, @guest, @component, @endcomponent, @slot, @endslot, @json, @env, @production, @endproduction, @dd, @dump
+
+
+@if(condition1)
+@elseif(condition2)
+@endif
+
+
+@isset(statement or variable)
+@endisset
+
+@empty(statement or variable)
+@endempty
+
+
+
+

@@ -8,5 +8,6 @@
 <body>
     <!-- <h1><center><marquee>This is laravel class, and laravel is getting damaged here! </marquee></center></h1> -->
     <h1>Welcome</h1>
+    <h2>Hellow {{$name}}</h2>   
     </body>
 </html>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProvisionServer;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserController2;
 use App\Http\Middleware\UserMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -184,11 +185,19 @@ Route::get('/customRoute1', function() {
     return view('welcome');
 });
 
+Route::get('/customR1/{id}', function($id) {
+    return view('welcome', ['name' => $id]);
+})->where('id', '[a-z]+');
+
 Route::prefix('custom')->middleware('UserMiddleware')->group(function() {
     //routes defined here will have 'custom' prefix and will use 'UserMiddleware' middleware
     
     //  pending !!!!!
+    Route :: get('dashboard',[UserController::class,'dashboard']);
+    Route :: get('users',[UserController::class,'users']);
+    Route :: get('settings',[UserController::class,'settings']);
 });
+
 
 Route::resource('posts', PostController::class);
 /*
@@ -202,4 +211,12 @@ PUT/PATCH   /posts/{id} (update method):    Update a speific post in the databas
 DELETE      /posts/{id} (destroy method):   Delete a specific post from the databse
 */
 
+Route::get('/', function() {
+    return view('welcome', ['name' => 'Suraj']);
+});
+// put in 'welcome.blade'
+// Hellow {{$name}}
+
+Route::get('/profile2', [UserController2::class, 'showProfile']);
+Route::get('/curUrl', [UserController2::class, 'showUrl']);
 
