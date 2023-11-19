@@ -4,8 +4,8 @@
 MVC: Model View Controller              [Design Pattern / Conceptual Framework]
 During implementations we have layers, for modularity & easy management of code.
 
-Model: db, 
-View: UI, 
+Model: db,
+View: UI,
 Controller: logic
 
 Larvel:
@@ -56,7 +56,7 @@ package.json contains all the javascript dependencies used in project
 
 vendor dir: contains all the dependencies that are installed using composer
 
-web.php: contains all routes (URLs) of the project
+web.php: contains all routes (URLs) of the project (web application routes & middleware)
 
 -----------------------------------------------------------------------------------------
 
@@ -153,7 +153,7 @@ A placeholder in a route definition that matches any value in the URL segment.
 
 
 
-How can you apply global route constraingts in Laravel?
+How can you apply global route constraints in Laravel?
 By using pattern method in the RouteServiceProvider.php
 
 facade:
@@ -185,9 +185,9 @@ Redirections (redirect):
 A technique for making a web page under more than one URI address
 
 
-// generating a new controller: 
+// generating a new controller:
 php artisan make:controller yourControllerName
-php artisan make:controller userController 
+php artisan make:controller userController
 
 // generating a new middleware
 php artisan make:middleware yourMiddlewareName
@@ -206,7 +206,7 @@ We pass dependency using constructor (mostly) or setter methods.
 missed class : regarding controller (grouping ..)
 rest:
 
-Restful Resource Controller: 
+Restful Resource Controller:
 php artisan make:controller yourControllerName --resource
 eg: php artisan make:controller PostController --resource
 

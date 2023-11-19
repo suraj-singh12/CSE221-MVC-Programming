@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     // 
+
     function show(){
         echo "Hello from UserController";
     }
@@ -28,4 +29,8 @@ class UserController extends Controller
     function settings() {
         return "settings from UserController";
     }
+    function custom() {
+        return "custom from UserController";
+    }
+
 }

@@ -217,6 +217,31 @@ Route::get('/', function() {
 // put in 'welcome.blade'
 // Hellow {{$name}}
 
-Route::get('/profile2', [UserController2::class, 'showProfile']);
+Route::get('/profile2', [UserController2::class, 'showProfile'])->name('profile');
 Route::get('/curUrl', [UserController2::class, 'showUrl']);
 
+Route::get('/frameworkUrl', function() {
+    return view('framework-url');
+});
+
+// 18 Sep 2023
+
+Route::domain("example.local") -> group(function() {
+    Route::get("/", [UserController::class, "showProfile"]);
+
+});
+
+Route::domain("subdomain.example.local") -> group(function() {
+    Route::get("/", [UserController::class, "showProfile"]);
+});
+
+//  backup /etc/hosts  then add
+//  127.0.0.1 example.local
+//  127.0.0.1 subdomain.example.local
+
+// clean dns command then (in windows)
+
+// http://example.local:8000/           access here
+
+
+// lms -> student centric revenew generation -> proposal : 
